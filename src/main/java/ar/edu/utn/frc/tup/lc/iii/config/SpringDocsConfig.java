@@ -15,15 +15,15 @@ import javax.sound.sampled.Line;
 
 @Configuration
 public class SpringDocsConfig {
-    @Value("{app.url}") private String url;
-    @Value("{app.dev-name}") private String devName;
-    @Value("{app.dev-email}") private String devEmail;
+    @Value("${app.url}") private String url;
+    @Value("${app.dev-name}") private String devName;
+    @Value("${app.dev-email}") private String devEmail;
 
     @Bean
     public OpenAPI openAPI(
-            @Value("@project.name@") String appName,
-            @Value("@project.description@") String appDescription,
-            @Value("@project.version@") String appVersion) {
+            @Value("${app.name}") String appName,
+            @Value("${app.desc}") String appDescription,
+            @Value("${app.desc}") String appVersion) {
 
         Info info = new Info()
                 .title(appName)
