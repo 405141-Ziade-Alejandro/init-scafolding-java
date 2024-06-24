@@ -3,6 +3,7 @@ package ar.edu.utn.frc.tup.lc.iii.controllers;
 import ar.edu.utn.frc.tup.lc.iii.dtos.DummyDto;
 import ar.edu.utn.frc.tup.lc.iii.models.Dummy;
 import ar.edu.utn.frc.tup.lc.iii.services.DummyService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class DummyController {
     }
 
     @GetMapping("")
-    public ResponseEntity<DummyDto> getDummyList() {
+    public ResponseEntity<List<DummyDto>> getDummyList() {
         List<Dummy> dummyList = dummyService.getDummysList();
         return null;
     }
@@ -34,15 +35,15 @@ public class DummyController {
         return null;
     }
 
-    @PutMapping("")
-    public ResponseEntity<DummyDto> updateDummy(DummyDto dto) {
-        Dummy dummy = dummyService.updateDummy(null);
+    @PutMapping("/{id}")
+    public ResponseEntity<DummyDto> updateDummy(@RequestBody @Valid DummyDto dto, @PathVariable Long id) {
+        Dummy dummy = dummyService.updateDummy(dto,id);
         return null;
     }
 
-    @DeleteMapping("")
-    public ResponseEntity<DummyDto> deleteDummy(DummyDto dto) {
-        dummyService.deleteDummy(null);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<DummyDto> deleteDummy(@PathVariable Long id) {
+        dummyService.deleteDummy(id);
         return null;
     }
 

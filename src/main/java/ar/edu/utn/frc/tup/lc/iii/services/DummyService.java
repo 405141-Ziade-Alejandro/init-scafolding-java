@@ -1,5 +1,6 @@
 package ar.edu.utn.frc.tup.lc.iii.services;
 
+import ar.edu.utn.frc.tup.lc.iii.dtos.DummyDto;
 import ar.edu.utn.frc.tup.lc.iii.models.Dummy;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public interface DummyService {
 
     Dummy createDummy(Dummy dummy);
 
-    Dummy updateDummy(Dummy dummy);
+    Dummy updateDummy(DummyDto dummy, Long id);
 
-    void deleteDummy(Dummy dummy);
+    void deleteDummy(Long id);
 }

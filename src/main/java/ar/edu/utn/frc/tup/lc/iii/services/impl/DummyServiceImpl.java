@@ -1,5 +1,6 @@
 package ar.edu.utn.frc.tup.lc.iii.services.impl;
 
+import ar.edu.utn.frc.tup.lc.iii.dtos.DummyDto;
 import ar.edu.utn.frc.tup.lc.iii.models.Dummy;
 import ar.edu.utn.frc.tup.lc.iii.repositories.DummyRepository;
 import ar.edu.utn.frc.tup.lc.iii.services.DummyService;
@@ -30,12 +31,12 @@ public class DummyServiceImpl implements DummyService {
     }
 
     @Override
-    public Dummy updateDummy(Dummy dummy) {
+    public Dummy updateDummy(DummyDto dummy, Long id) {
         return null;
     }
 
     @Override
-    public void deleteDummy(Dummy dummy) {
+    public void deleteDummy(Long id) {
 
     }
 }
