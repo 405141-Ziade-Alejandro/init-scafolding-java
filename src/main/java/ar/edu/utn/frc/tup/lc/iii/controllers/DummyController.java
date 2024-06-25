@@ -3,6 +3,11 @@ package ar.edu.utn.frc.tup.lc.iii.controllers;
 import ar.edu.utn.frc.tup.lc.iii.dtos.DummyDto;
 import ar.edu.utn.frc.tup.lc.iii.models.Dummy;
 import ar.edu.utn.frc.tup.lc.iii.services.DummyService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +22,23 @@ public class DummyController {
     @Autowired
     private DummyService dummyService;
 
+    @Operation(
+            summary = "check the health of the app",
+            description = "if the app is alive it returns hello world"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "successful operation",
+                    content = @Content(
+                            schema = @Schema(implementation = String.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "internal server error"
+            )
+    })
     @GetMapping("/{id}")
     public ResponseEntity<DummyDto> getDummy(@PathVariable Long id) {
         Dummy dummy = dummyService.getDummy(id);
